@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remote Healthcare Vault</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+      #map { height: 450px; border-radius: 8px;}
+      iframe { border-radius: 8px;}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+    <a href="index.html"><img src="../images/logo.PNG" alt="RHV logo"></a>
+    </div>
+    <h1>Revolutionizing healthcare through telemedicine</h1>
+    <p>Your Health, Anytime, Anywhere.
+    </p>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="appointment.html">Book Appointment</a>
+    <a href="profile.html">Profile</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Services Section -->
+  <section id="services">
+    <h2 style="text-align: center;">Our Services</h2>
+    <div class="containers">
+      <div class="cards">
+        <h3>Virtual Consultations</h3>
+        <p>Book a virtual consultation with a licensed healthcare provider from the comfort of your home.</p><br>
+        <img src="../images/consult.PNG" alt="patient consulting online"><br>
+        <a href="appointment.html">Click here to consult with us today</a>
+      </div>
+      <div class="cards">
+        <h3>Doctor Specializations</h3>
+        <p>Find the right specialist for your health needs and book an appointment at your convenience.</p><br>
+        <iframe width="650" height="450" src="https://www.youtube.com/embed/0f43HWAQjuE" 
+            title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+      </div>
+      <div class="cards">
+        <h3>Appointment Scheduling</h3>
+        <p>Easily schedule, reschedule, or cancel your appointments online.</p><br>
+        <img src="../images/schedule.PNG" alt="patient scheduling with their caregiver"><br>
+        <a href="appointment.html">Click here to schedule a visit with us today</a>
+      </div>
+      <div class="cards">
+        <h3>Location-Based Services</h3>
+        <p>Find nearby health centers using our location-based services integrated with Google Maps.</p><br>
+        <div id="map"></div>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script>
+            var map = L.map('map').setView([-1.286389, 36.817223], 13); // Coordinates for Nairobi, Kenya
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([-1.286389, 36.817223]).addTo(map)
+                .bindPopup('Nairobi, Kenya')
+                .openPopup();
+        </script>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Remote Healthcare Vault(RHV). All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Interactivity and JWT Handling -->
+  <script src="public/app.js"></script>
+</body>
+</html>

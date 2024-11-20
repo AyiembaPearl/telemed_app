@@ -1,0 +1,294 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  body {
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  
+  /* Header Styles */
+  header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* Navigation Styles */
+  nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+  }
+  
+  .logo img{
+    width: 100px;
+    height:100px;
+    border-radius: 50%;
+  }
+
+  nav a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  nav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .content-container {
+    display: flex;
+    margin: 20px;
+  }
+
+  /* Main Content Styles */
+  main {
+    flex: 2;
+    padding: 20px;
+    margin-right: 20px;
+    /* max-width: 1200px;
+    margin: auto; */
+  }
+  
+  main h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #4CAF50;
+  }
+  
+  /* Form Styles */
+  form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  form label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: bold;
+  }
+  
+  form input,
+  form select,
+  form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 250px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  /* Highlight input fields on focus */
+  input:focus,
+  select:focus,
+  textarea:focus {
+      border-color: #45a049; /* Blue border on focus */
+      outline: none; /* Remove default outline */
+  }
+  form button:hover {
+    background-color: #45a049;
+  }
+  #formSummary {
+    background-color: #ffffff; /* White background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin-top: 20px;
+    width: 90%;
+    max-width: 600px; /* Maximum width for larger screens */
+  }
+  /* input[type="checkbox"] {
+    margin-left: 5px;
+    vertical-align: middle;
+    transform: translateY(0px);
+  } */
+  /* Specific styling for the terms checkbox label */
+  form .terms-label {
+    display: inline-block; /* Keep the label inline within the form*/
+    font-weight: normal; /* Optional: Remove bold text if needed */
+    white-space: nowrap; /* Prevents the label from breaking into a new line */
+  }
+
+  /* Style the checkbox to appear immediately after the text */
+  form .terms-label input[type="checkbox"] {
+    margin-left:5px; /* small gap between text and checkbox */
+    vertical-align: baseline; /* Ensure checkbox aligns naturally with the text */
+  }
+  
+  /* Responsive Grid Layout for Doctor and Patient Dashboard */
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+ .card a {
+    outline: none;
+    text-decoration: none;
+  }
+  .card:hover{
+   background: local;
+
+  }
+  .card a h3{
+    color: #333;
+    margin-bottom: 10px;
+  }
+  .card a h3:hover{
+    color: #fffbfb;
+    margin-bottom: 10px;
+  }
+  
+  .card a p {
+    color: #666;
+  }
+  .card a p:hover {
+    color: #ffffff;
+  }
+  
+  /* Footer Styles */
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  footer p {
+    font-size: 14px;
+  }
+  
+  /* Media Queries for Mobile Devices */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 20px;
+    }
+  
+    nav a {
+      padding: 10px;
+    }
+  
+    form {
+      padding: 15px;
+    }
+  
+    form button {
+      width: 100%;
+    }
+  
+    .container {
+      grid-template-columns: 1fr;
+    }
+  }  
+
+.sidebar-container {
+  flex: 1;
+  display: block;
+  flex-direction: column;
+}
+
+/* Sidebar Section Styling */
+.sidebar-section {
+  background-color: #4CAF50;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.sidebar-section h2 {
+  margin-bottom: 15px;
+}
+
+.profile-pic-container {
+  display: flex;
+  margin: 20px;
+  margin-bottom: 20px;
+}
+.profileDetails{
+  flex: 2;
+}
+
+.profile-upload{
+  flex: 1;
+  margin: 50px;
+}
+
+#profile-pic {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+  margin-bottom: 10px;
+}
+
+#upload-pic {
+  display: block;
+  margin-top: 10px;
+
+}
+
+/* Services html page */
+.containers{
+  margin: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+.cards{
+  background-color: lightpink;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+.cards img{
+  width: 650px;
+  height: 450px;
+  border-radius: 8px;
+}
+@media (max-width: 480px) {
+  .containers {
+    grid-template-columns: 1fr;
+  }
+}
+
+

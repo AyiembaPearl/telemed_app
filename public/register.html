@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remote Healthcare Vault - Register</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+    <img src="../images/logo.PNG" alt="RHV logo">
+    </div>
+    <h1>Revolutionizing healthcare through telemedicine</h1>
+    <p>Your Health, Anytime, Anywhere.</p>
+  </header><br>
+  <h2 style="text-align: center;">Create Account</h2>
+
+  <form id="registerForm">
+    <label for="first_name">First Name</label>
+      <input type="text" id="first_name" name="first_name" required>
+
+      <label for="last_name">Last Name</label>
+      <input type="text" id="last_name" name="last_name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" name="phone" required>
+
+      <label for="date_of_birth">Date of Birth</label>
+      <input type="date" id="date_of_birth" name="date_of_birth" required>
+
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option value="">Select one</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="address">Address</label>
+      <input type="text" id="address" name="address" required>
+
+      <!-- <button type="submit">Register</button>
+    </form>
+    <p id="message"></p> -->
+
+
+    <label for="region">Region of Residence</label>
+    <select id="region" name="region" required> 
+      <option value="">Select one</option>
+      <option>Africa</option>
+      <option>Asia</option>
+      <option>North America</option>
+      <option>South America</option>
+      <option>Europe</option>
+      <option>Antarctica</option>
+      <option>Australia </option>
+    </select><br><br>
+
+    <label for="contact">Preferred Contact Method</label>
+    <select id="contact" name="contact" required>
+        <option value="">Select one</option>
+        <option value="Phone">Phone call</option>
+        <option value="Email">Email</option>
+        <option value="Text">Text/SMS</option>
+    </select><br>
+
+    <label for="terms" class="terms-label">
+      I have read and I accept <a href="terms.html">terms & conditions.</a>
+      <input type="checkbox" id="terms" required>
+    </label><br>
+    <button type="submit">Register</button><br>
+    <a href="login.html">Already have an account? Log in</a>
+  </form>  
+  
+  <!-- Section to display form summary -->
+  <div id="formSummary"></div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 Remote Healthcare Vault(RHV). All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Interactivity and JWT Handling -->
+  <script src="public/app.js"></script>
+</body>
+</html>
