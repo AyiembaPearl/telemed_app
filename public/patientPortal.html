@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remote Healthcare Vault</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+    <a href="index.html"><img src="../images/logo.PNG" alt="RHV logo"></a>
+    </div>
+    <h1>Revolutionizing healthcare through telemedicine</h1>
+    <p>Your Health, Anytime, Anywhere.
+    </p>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html">Dashboard</a>
+    <a href="services.html">Services</a>
+    <a href="appointment.html">Book Appointment</a>
+    <a href="patientPortal.html">Profile</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+<div class="content-container">
+    <!-- Profile Section -->
+  <section id="profile">
+    <h2 style="text-align: center;">Your profile</h2>
+
+  <!-- Profile Picture Upload -->
+  <div class="profile-pic-container">
+      <div class="profile-upload">
+      <img id="profile-pic" src="https://api.dicebear.com/9.x/fun-emoji/svg" alt="Profile Picture" style="width: 100px; height: 100px; object-fit: cover;">
+      <input type="file" id="upload-pic" accept="image/*" onchange="previewProfilePic(event)">
+      </div>
+      <div class="profileDetails">
+      <form id="profileForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter a new password">
+
+        <button type="submit">Update Profile</button>
+      </form>
+      </div>
+  </div>
+  </section>
+</div>
+  <!-- Footer -->
+  <footer>
+    Review our <a href="terms.html">terms and conditions here</a>
+    <p>&copy; 2024 Remote Healthcare Vault(RHV). All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Interactivity and JWT Handling -->
+  <script src="public/app.js"></script>
+</body>
+</html>

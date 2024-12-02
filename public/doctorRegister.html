@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Remote Healthcare Vault - Doctor Registration</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
+  
 </head>
 <body>
 
@@ -20,27 +22,73 @@
 
   <form id="registerForm">
     <label for="first_name">First Name</label>
-      <input type="text" id="first_name" name="first_name" required>
+    <input type="text" id="first_name" name="first_name" placeholder="enter first name" required>
 
-      <label for="last_name">Last Name</label>
-      <input type="text" id="last_name" name="last_name" required>
+    <label for="last_name">Last Name</label>
+    <input type="text" id="last_name" name="last_name" placeholder="enter last name" required>
 
-      <label for="specialization">Specialization</label>
-      <input type="text" id="specialization" name="specialization" required>
+    <label for="specialization">Specialization</label>
+    <select id="specialization" name="specialization" required>
+      <option value="">-- Select Specialization --</option>
+      <option value="anesthesiology">Anesthesiology</option>
+      <option value="cardiology">Cardiology</option>
+      <option value="dentist">Dentist</option>
+      <option value="dermatology">Dermatology</option>
+      <option value="endocrinology">Endocrinology</option>
+      <option value="ent">Ear, Nose and Throat(ENT/Otolaryngology)</option>
+      <option value="emergency_medicine">Emergency Medicine</option>
+      <option value="family_medicine">Family Medicine</option>
+      <option value="gastroenterology">Gastroenterology</option>
+      <option value="general_medicine">General Medicine</option>
+      <option value="geriatrics">Geriatrics</option>
+      <option value="hematology">Hematology</option>
+      <option value="infectious_disease">Infectious Disease</option>
+      <option value="internal_medicine">Internal Medicine</option>
+      <option value="nephrology">Nephrology</option>
+      <option value="neurology">Neurology</option>
+      <option value="nutrition">Nutrition</option>
+      <option value="obstetrics_gynecology">Obstetrics & Gynecology</option>
+      <option value="oncology">Oncology</option>
+      <option value="ophthalmology">Ophthalmology</option>
+      <option value="orthopedics">Orthopedics</option>
+      <option value="pediatrics">Pediatrics</option>
+      <option value="physiotherapy">Physiotherapy</option>
+      <option value="psychiatry">Psychiatry</option>
+      <option value="pulmonology">Pulmonology</option>
+      <option value="radiology">Radiology</option>
+      <option value="rheumatology">Rheumatology</option>
+      <option value="surgery">Surgery</option>
+      <option value="urology">Urology</option>
+      <option value="pathology">Pathology</option>
+      <option value="public_health">Public Health</option>
+      <option value="occupational_medicine">Occupational Medicine</option>
+      <option value="nuclear_medicine">Nuclear Medicine</option>
+      <option value="sports_medicine">Sports Medicine</option>
+      <option value="palliative_medicine">Palliative Medicine</option>
+    </select>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="enter your official email address" required>
 
-      <label for="phone">Phone Number</label>
-      <input type="text" id="phone" name="phone" required>
+    <label for="phone">Phone Number</label>
+    <input type="text" id="phone" name="phone" placeholder="enter your registered phone number" required>
 
-      <label for="schedule">Schedule</label>
-      <input type="date" id="schedule" name="schedule" required>
-
+    <label for="schedule">Schedule</label>
+    <input type="text" id="schedule" name="schedule" placeholder="click to select your availability dates" required>
+    
+    <!-- Flatpickr JavaScript for doctors selecting multiple dates on their schedule -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
+    <script>
+      flatpickr("#schedule", {
+        mode: "multiple", // Allows multiple dates to be selected in an instance
+        dateFormat: "Y-m-d", // Ensures compatibility with HTML5 date format
+        minDate: "today" // Optional: prevents past dates
+      });
+    </script>
 
     <label for="terms" class="terms-label">
-      I have read and I accept <a href="terms.html">terms & conditions.</a>
-      <input type="checkbox" id="terms" required>
+    I have read and I accept <a href="terms.html">terms & conditions.</a>
+    <input type="checkbox" id="terms" required>
     </label><br>
     <button type="submit">Register</button><br>
     <a href="doctorLogin.html">Already have an account? Log in</a>
