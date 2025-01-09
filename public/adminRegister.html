@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Remote Healthcare Vault - Admin Registration</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -18,15 +19,27 @@
   </header><br>
   <h2 style="text-align: center;">Admin Account Creation</h2>
 
-  <form id="registerForm">
+  <form id="registerForm" data-role="admin">
+    <label for="first_name">First Name</label>
+    <input type="text" id="first_name" name="first_name" placeholder="enter first name" required>
+
+    <label for="last_name">Last Name</label>
+    <input type="text" id="last_name" name="last_name" placeholder="enter last name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="enter your official email address" required>
+
+    <label for="phone">Phone Number</label>
+    <input type="text" id="phone" name="phone" placeholder="enter your registered phone number" required>
+    
     <label for="username">User Name</label>
-      <input type="text" id="username" name="username" required>
+    <input type="text" id="username" name="username" required>
 
-      <label for="password">Last Name</label>
-      <input type="password" id="password" name="password" required>
+    <label for="role">Role</label>
+    <input type="text" id="role" name="role" required>
 
-      <label for="role">Role</label>
-      <input type="text" id="role" name="role" required>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
 
 
     <label for="terms" class="terms-label">
@@ -41,6 +54,15 @@
   <div id="formSummary"></div>
 
   <!-- Footer -->
+  <footer style="background-color: lightpink; color: black;">
+    Review our <a href="terms.html">terms and conditions here</a><br>
+    <i class="fa-brands fa-facebook"></i>
+    <i class="fa-brands fa-twitter"></i>
+    <i class="fa-brands fa-linkedin"></i>
+    <i class="fa-brands fa-youtube"></i>
+    <i class="fa-brands fa-tiktok"></i>
+    <i class="fa-brands fa-instagram"></i>
+  </footer>
   <footer>
     <p>&copy; 2024 Remote Healthcare Vault(RHV). All Rights Reserved.</p>
   </footer>

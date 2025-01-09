@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Remote Healthcare Vault - Register</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -16,9 +17,9 @@
     <h1>Revolutionizing healthcare through telemedicine</h1>
     <p>Your Health, Anytime, Anywhere.</p>
   </header><br>
-  <h2 style="text-align: center;">Create Account</h2>
+  <h2 style="text-align: center;">Patient Registration</h2>
 
-  <form id="registerForm">
+  <form id="registerForm" data-role="patient">
     <label for="first_name">First Name</label>
       <input type="text" id="first_name" name="first_name" required>
 
@@ -85,11 +86,20 @@
   <div id="formSummary"></div>
 
   <!-- Footer -->
+  <footer style="background-color: lightpink; color: black;">
+    Review our <a href="terms.html">terms and conditions here</a><br>
+    <i class="fa-brands fa-facebook"></i>
+    <i class="fa-brands fa-twitter"></i>
+    <i class="fa-brands fa-linkedin"></i>
+    <i class="fa-brands fa-youtube"></i>
+    <i class="fa-brands fa-tiktok"></i>
+    <i class="fa-brands fa-instagram"></i>
+  </footer>
   <footer>
     <p>&copy; 2024 Remote Healthcare Vault(RHV). All Rights Reserved.</p>
   </footer>
 
   <!-- JavaScript for Interactivity and JWT Handling -->
-  <script src="public/app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
