@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Remote Healthcare Vault - Admin Registration</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/public/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
   <!-- Header -->
   <header>
     <div class="logo">
-    <img src="../images/logo.PNG" alt="RHV logo">
+      <a href="/public/index.html"><img src="../images/logo.PNG" alt="RHV logo"></a>
     </div>
     <h1>Revolutionizing healthcare through telemedicine</h1>
     <p>Your Health, Anytime, Anywhere.</p>
@@ -29,25 +29,24 @@
     <label for="email">Email</label>
     <input type="email" id="email" name="email" placeholder="enter your official email address" required>
 
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="enter a unique password" required>
+
     <label for="phone">Phone Number</label>
     <input type="text" id="phone" name="phone" placeholder="enter your registered phone number" required>
     
     <label for="username">User Name</label>
-    <input type="text" id="username" name="username" required>
+    <input type="text" id="username" name="username" placeholder="enter your preffered username" required>
 
     <label for="role">Role</label>
-    <input type="text" id="role" name="role" required>
-
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required>
-
+    <input type="text" id="role" name="role" placeholder="enter your role" required>
 
     <label for="terms" class="terms-label">
-      I have read and I accept <a href="terms.html">terms & conditions.</a>
+      I have read and I accept <a href="/public/terms.html">terms & conditions.</a>
       <input type="checkbox" id="terms" required>
     </label><br>
     <button type="submit">Register</button><br>
-    <a href="adminLogin.html">Already have an account? Log in</a>
+    <a href="/public/admin/login.html">Already have an account? Log in</a>
   </form>  
   
   <!-- Section to display form summary -->
@@ -55,7 +54,7 @@
 
   <!-- Footer -->
   <footer style="background-color: lightpink; color: black;">
-    Review our <a href="terms.html">terms and conditions here</a><br>
+    Review our <a href="/public/terms.html">terms and conditions here</a><br>
     <i class="fa-brands fa-facebook"></i>
     <i class="fa-brands fa-twitter"></i>
     <i class="fa-brands fa-linkedin"></i>
@@ -68,6 +67,6 @@
   </footer>
 
   <!-- JavaScript for Interactivity and JWT Handling -->
-  <script src="public/app.js"></script>
+  <script src="/public/app.js"></script>
 </body>
 </html>

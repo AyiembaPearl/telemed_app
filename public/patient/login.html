@@ -3,37 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Remote Healthcare Vault - Doctor</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Remote Healthcare Vault - Login In</title>
+  <link rel="stylesheet" href="/public/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
   <!-- Header -->
   <header>
     <div class="logo">
-    <img src="../images/logo.PNG" alt="RHV logo">
+      <a href="/public/index.html"><img src="../images/logo.PNG" alt="RHV logo"></a>
     </div>
     <h1>Revolutionizing healthcare through telemedicine</h1>
     <p>Your Health, Anytime, Anywhere.</p>
   </header><br>
-  <h2 style="text-align: center;">Doctor Login</h2>
+  <h2 style="text-align: center;">Patient Login</h2>
 
-    <form id="loginForm" data-role="doctor">
+    <form id="loginForm" data-role="patient">
         <label for="email">Email:</label>
         <input type="email" id="email" placeholder="Enter registered email address" required><br><br>
 
         <label for="password">Password:</label>
         <input type="password" id="password" placeholder="Enter your current password" minlength="6" required><br><br>
 
-        <a href="index.html"><button type="submit">Login</button></a><br>
-        <a href="doctorRegister.html">Need a new account? Create here!</a>
+        <button type="submit">Login</button></a><br>
+        <a href="/public/patient/register.html">Need a new account? Create here!</a>
     </form>
 
     <!-- Section to display form summary -->
     <div id="formSummary"></div>
     <!-- Footer -->
     <footer style="background-color: lightpink; color: black;">
-      Review our <a href="terms.html">terms and conditions here</a><br>
+      Review our <a href="/public/terms.html">terms and conditions here</a><br>
       <i class="fa-brands fa-facebook"></i>
       <i class="fa-brands fa-twitter"></i>
       <i class="fa-brands fa-linkedin"></i>
@@ -45,6 +45,6 @@
       <p>&copy; 2024 Remote Healthcare Vault(RHV). All Rights Reserved.</p>
     </footer>
 
-    <script src="app.js"></script>
+    <script src="/public/app.js"></script>
 </body>
 </html>

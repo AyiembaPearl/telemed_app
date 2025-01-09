@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Remote Healthcare Vault - Register</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/public/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
   <!-- Header -->
   <header>
     <div class="logo">
-    <img src="../images/logo.PNG" alt="RHV logo">
+      <a href="/public/index.html"><img src="../images/logo.PNG" alt="RHV logo"></a>
     </div>
     <h1>Revolutionizing healthcare through telemedicine</h1>
     <p>Your Health, Anytime, Anywhere.</p>
@@ -21,65 +21,60 @@
 
   <form id="registerForm" data-role="patient">
     <label for="first_name">First Name</label>
-      <input type="text" id="first_name" name="first_name" required>
+    <input type="text" id="first_name" name="first_name" placeholder="enter first name" required>
 
-      <label for="last_name">Last Name</label>
-      <input type="text" id="last_name" name="last_name" required>
+    <label for="last_name">Last Name</label>
+    <input type="text" id="last_name" name="last_name" placeholder="enter last name" required>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="enter a valid email address" required>
 
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="enter a unique password" required>
 
-      <label for="phone">Phone Number</label>
-      <input type="text" id="phone" name="phone" required>
+    <label for="phone">Phone Number</label>
+    <input type="text" id="phone" name="phone" placeholder="enter your phone number" required>
 
-      <label for="date_of_birth">Date of Birth</label>
-      <input type="date" id="date_of_birth" name="date_of_birth" required>
+    <label for="date_of_birth">Date of Birth</label>
+    <input type="date" id="date_of_birth" name="date_of_birth" required>
 
-      <label for="gender">Gender</label>
-      <select id="gender" name="gender" required>
-        <option value="">Select one</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-      </select>
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender" required>
+      <option value="">Select your gender</option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </select>
 
-      <label for="address">Address</label>
-      <input type="text" id="address" name="address" required>
-
-      <!-- <button type="submit">Register</button>
-    </form>
-    <p id="message"></p> -->
-
+    <label for="address">Address</label>
+    <input type="text" id="address" name="address" placeholder="enter a valid physical address" required>
 
     <label for="region">Region of Residence</label>
     <select id="region" name="region" required> 
-      <option value="">Select one</option>
+      <option value="">Select your residential continent</option>
       <option>Africa</option>
+      <option>Antarctica</option>
       <option>Asia</option>
+      <option>Australia </option>
+      <option>Europe</option>
       <option>North America</option>
       <option>South America</option>
-      <option>Europe</option>
-      <option>Antarctica</option>
-      <option>Australia </option>
     </select><br><br>
 
     <label for="contact">Preferred Contact Method</label>
     <select id="contact" name="contact" required>
-        <option value="">Select one</option>
+        <option value="">Select your preffered method of contact</option>
         <option value="Phone">Phone call</option>
         <option value="Email">Email</option>
         <option value="Text">Text/SMS</option>
     </select><br>
 
     <label for="terms" class="terms-label">
-      I have read and I accept <a href="terms.html">terms & conditions.</a>
+      I have read and I accept <a href="/public/terms.html">terms & conditions.</a>
       <input type="checkbox" id="terms" required>
     </label><br>
     <button type="submit">Register</button><br>
-    <a href="login.html">Already have an account? Log in</a>
+    <a href="/public/patient/login.html">Already have an account? Log in</a>
   </form>  
   
   <!-- Section to display form summary -->
@@ -87,7 +82,7 @@
 
   <!-- Footer -->
   <footer style="background-color: lightpink; color: black;">
-    Review our <a href="terms.html">terms and conditions here</a><br>
+    Review our <a href="/public/terms.html">terms and conditions here</a><br>
     <i class="fa-brands fa-facebook"></i>
     <i class="fa-brands fa-twitter"></i>
     <i class="fa-brands fa-linkedin"></i>
@@ -100,6 +95,6 @@
   </footer>
 
   <!-- JavaScript for Interactivity and JWT Handling -->
-  <script src="app.js"></script>
+  <script src="/public/app.js"></script>
 </body>
 </html>

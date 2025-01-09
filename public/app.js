@@ -1,3 +1,6 @@
+//Getting reference to the submitButton to ensure it matches the ID of the submission
+const submitButton = document.getElementById('submitButton');
+
 // Registration form validation
 const form = document.getElementById('registerForm');
 const userRole = form.getAttribute('data-role');
@@ -9,6 +12,7 @@ const userRole = form.getAttribute('data-role');
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const phoneNumber = document.getElementById('phone').value;
+    const termsAccepted = document.getElementById('terms').checked;
     //other distinct fields
     let distinctData = {};
     if (userRole === 'doctor') {
@@ -28,16 +32,19 @@ const userRole = form.getAttribute('data-role');
           address: document.getElementById('address').value,
           region: document.getElementById('region').value,
           contact: document.getElementById('contact').value,
-          termsAccepted: document.getElementById('terms').checked,
         };
     }
     //preparing the payload
-    const payload = { firstName, lastName, email, password, phoneNumber, ...distinctData };
+    const payload = { firstName, lastName, email, password, phoneNumber, termsAccepted, ...distinctData };
     
     if (!validateForm(payload)) return;
 
     //determining the API endpoints
-    const endpoint = `/public/${userRole}/register`;
+    const endpoint = `/public/${userRole}/register.html`;
+    
+    submitButton.disabled = true;
+    submitButton.innerHTML = 'Processing your request...';
+
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -45,14 +52,19 @@ const userRole = form.getAttribute('data-role');
         body: JSON.stringify(payload),
       });
       const data = await response.json();
+      submitButton.disabled = false;
+      submitButton.innerHTML = 'Submit Request';
+
       if (response.ok) {
         alert(`${userRole} registered successfully!`);
       } else {
           alert(data.error || 'Registration failed!');
       }
     } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred while submitting the form.');
+      submitButton.disabled = false;
+      submitButton.innerHTML = 'Submit Request';
+      console.error('Error:', error);
+      alert('An error occurred while submitting the form.');
     }
 });
 
@@ -96,7 +108,7 @@ function validateForm(data) {
 }
 
 
-//Log in validation
+//Login validation
 const form1 = document.getElementById('loginForm');
 const userRole1 = form1.getAttribute('data-role');
   form1.addEventListener('submit', async (event) => {
@@ -117,24 +129,34 @@ const userRole1 = form1.getAttribute('data-role');
 
     const loginData = { password, ...diffData};
 
+    const endpoint = `/public/${userRole1}/login.html`;
+
     if(!validateLogin(loginData)) return;
 
+    submitButton.disabled = false;
+    submitButton.innerHTML = 'Submit';
+
     try{
-      const response = await fetch('/public/login', {
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(loginData)
       });
 
       const result = await response.json();
+      submitButton.disabled = false;
+      submitButton.innerHTML = 'Submit';
+
       if (response.ok) {
         localStorage.setItem('authToken', result.token);
         alert('Login successful!');
-        window.location.href = `/public/${result.role}.html`;
+        window.location.href = `/public/${userRole1}/login.html`;
       } else {
         alert(result.role || 'Login failed!')
       }
     } catch(error){
+      submitButton.disabled = false;
+      submitButton.innerHTML = 'Submit';
       console.error('Error:', error);
       alert('An error occurred while logging in. Try again with the correct credentials');
     }
@@ -143,7 +165,7 @@ const userRole1 = form1.getAttribute('data-role');
     const token = localStorage.getItem('authToken');
     if(!token) {
       alert('You must be logged in to access this page.');
-      window.location.href = '/public/login.html';
+      window.location.href = `/public/${userRole1}/login.html`;
     }
 });
 
@@ -169,84 +191,83 @@ function validateLogin(data) {
 }
 
 
-//loading/processing user requests
-const submitButton = form.querySelector('button[type="submit"]');
-submitButton.disabled = true;
-submitButton.innerHTML = 'Processing your request...';
+// //loading/processing user requests
+// const submitButton = form.querySelector('button[type="submit"]');
+// submitButton.disabled = true;
+// submitButton.innerHTML = 'Processing your request...';
 
-const response = await fetch(endpoint, {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(payload),
-});
-submitButton.disabled = false;
-submitButton.innerHTML = 'Submit';
+// const response = await fetch(endpoint, {
+//   method: 'POST',
+//   headers: { 'Content-Type': 'application/json' },
+//   body: JSON.stringify(payload),
+// });
 
 
-// Submit Appointment Form
-document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-  
-    const doctor = document.getElementById('doctor').value;
-    const date = document.getElementById('appointmentDate').value;
-    const time = document.getElementById('appointmentTime').value;
-  
-    const token = localStorage.getItem('authToken'); // JWT stored in localStorage
-  
-    // Make a POST request to the backend to book the appointment
-    fetch('/appointments/create', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token
-      },
-      body: JSON.stringify({ doctor, date, time })
-    })
-    .then(response => response.json())
-    .then(data => {
-      alert('Appointment booked successfully!');
-    })
-    .catch(error => console.error('Error:', error));
-  });
-  
-// Submit Profile Update Form
-document.getElementById('profileForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const firstName = document.getElementById('first_name').value;
-  const lastName = document.getElementById('last_name').value;
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const address = document.getElementById('address').value;
-  
-  const token = localStorage.getItem('authToken');
-  
-  // Make a PUT request to update the user profile
-  fetch('/users/update', {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': token
-    },
-    body: JSON.stringify({ firstName, lastName, email, password, address })
-  })
-  .then(response => response.json())
-  .then(data => {
-    alert('Profile updated successfully!');
-  })
-  .catch(error => console.error('Error:', error));
-});  
 
-//profile pic
-function previewProfilePic(event) {
-  const file = event.target.files[0];
-  if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-          document.getElementById('profile-pic').src = e.target.result;
-      };
-      reader.readAsDataURL(file);
-  } else {
-    alert('Please upload a valid image file.');
-  }
-}
+// // Submit Appointment Form
+// document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+//     e.preventDefault();
+  
+//     const doctor = document.getElementById('doctor').value;
+//     const date = document.getElementById('appointmentDate').value;
+//     const time = document.getElementById('appointmentTime').value;
+  
+//     const token = localStorage.getItem('authToken'); // JWT stored in localStorage
+  
+//     // Make a POST request to the backend to book the appointment
+//     fetch('/appointments/create', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'Authorization': token
+//       },
+//       body: JSON.stringify({ doctor, date, time })
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//       alert('Appointment booked successfully!');
+//     })
+//     .catch(error => console.error('Error:', error));
+//   });
+  
+// // Submit Profile Update Form
+// document.getElementById('profileForm').addEventListener('submit', function(e) {
+//   e.preventDefault();
+  
+//   const firstName = document.getElementById('first_name').value;
+//   const lastName = document.getElementById('last_name').value;
+//   const email = document.getElementById('email').value;
+//   const password = document.getElementById('password').value;
+//   const address = document.getElementById('address').value;
+  
+//   const token = localStorage.getItem('authToken');
+  
+//   // Make a PUT request to update the user profile
+//   fetch('/users/update', {
+//     method: 'PUT',
+//     headers: {
+//       'Content-Type': 'application/json',
+//       'Authorization': token
+//     },
+//     body: JSON.stringify({ firstName, lastName, email, password, address })
+//   })
+//   .then(response => response.json())
+//   .then(data => {
+//     alert('Profile updated successfully!');
+//   })
+//   .catch(error => console.error('Error:', error));
+// });  
+
+// //profile pic
+// function previewProfilePic(event) {
+//   const file = event.target.files[0];
+//   if (file) {
+//       const reader = new FileReader();
+//       reader.onload = function (e) {
+//           document.getElementById('profile-pic').src = e.target.result;
+//       };
+//       reader.readAsDataURL(file);
+//   } else {
+//     alert('Please upload a valid image file.');
+//   }
+// }
