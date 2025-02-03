@@ -1,4 +1,5 @@
 const db = require('../config/db');
+const bcyrypt = require('bcrypt');
 
 // Register patient
 exports.registerPatient = async (req, res) => {
@@ -13,9 +14,39 @@ exports.registerPatient = async (req, res) => {
     );
 
     res.status(201).json({ message: 'Patient registered successfully', patient_id: result.insertId });
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({ error: 'Server error' });
   }
+};
+
+// Patient Login
+exports.loginPatient = (req, res) => {
+  const { email, password } = req.body;
+
+  const sql = "SELECT * FROM Patients WHERE email = ?";
+  db.query(sql, [email], (err, results) => {
+      if (err || results.length === 0) {
+          return res.status(401).json({ error: 'Invalid email or password' });
+      }
+
+      const patient = results[0];
+      if (!bcrypt.compareSync(password, patient.password_hash)) {
+          return res.status(401).json({ error: 'Invalid email or password' });
+      }
+
+      req.session.patientId = patient.id;
+      res.status(200).json({ message: 'Login successful!' });
+  });
+};
+
+// Patient Logout
+exports.logoutPatient = (req, res) => {
+  req.session.destroy(err => {
+      if (err) {
+          return res.status(500).json({ error: 'Could not log out' });
+      }
+      res.status(200).json({ message: 'Logged out successfully' });
+  });
 };
 
 // View patient profile

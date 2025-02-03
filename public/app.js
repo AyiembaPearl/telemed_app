@@ -6,7 +6,7 @@ const form = document.getElementById('registerForm');
 const userRole = form.getAttribute('data-role');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    //common fields for patient, doctor and admin
+    //collect common fields for patient, doctor and admin
     const firstName = document.getElementById('first_name').value;
     const lastName = document.getElementById('last_name').value;
     const email = document.getElementById('email').value;
@@ -190,84 +190,70 @@ function validateLogin(data) {
   return true;
 }
 
+// Submit Appointment Form
+document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+  
+    const doctor = document.getElementById('doctor').value;
+    const date = document.getElementById('appointmentDate').value;
+    const time = document.getElementById('appointmentTime').value;
+  
+    const token = localStorage.getItem('authToken'); // JWT stored in localStorage
+  
+    // Make a POST request to the backend to book the appointment
+    fetch('/appointments/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      },
+      body: JSON.stringify({ doctor, date, time })
+    })
+    .then(response => response.json())
+    .then(data => {
+      alert('Appointment booked successfully!');
+    })
+    .catch(error => console.error('Error:', error));
+  });
+  
+// Submit Profile Update Form
+document.getElementById('profileForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const firstName = document.getElementById('first_name').value;
+  const lastName = document.getElementById('last_name').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const address = document.getElementById('address').value;
+  
+  const token = localStorage.getItem('authToken');
+  
+  // Make a PUT request to update the user profile
+  fetch('/users/update', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': token
+    },
+    body: JSON.stringify({ firstName, lastName, email, password, address })
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert('Profile updated successfully!');
+  })
+  .catch(error => console.error('Error:', error));
+});  
 
-// //loading/processing user requests
-// const submitButton = form.querySelector('button[type="submit"]');
-// submitButton.disabled = true;
-// submitButton.innerHTML = 'Processing your request...';
-
-// const response = await fetch(endpoint, {
-//   method: 'POST',
-//   headers: { 'Content-Type': 'application/json' },
-//   body: JSON.stringify(payload),
-// });
-
-
-
-// // Submit Appointment Form
-// document.getElementById('appointmentForm').addEventListener('submit', function(e) {
-//     e.preventDefault();
-  
-//     const doctor = document.getElementById('doctor').value;
-//     const date = document.getElementById('appointmentDate').value;
-//     const time = document.getElementById('appointmentTime').value;
-  
-//     const token = localStorage.getItem('authToken'); // JWT stored in localStorage
-  
-//     // Make a POST request to the backend to book the appointment
-//     fetch('/appointments/create', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'Authorization': token
-//       },
-//       body: JSON.stringify({ doctor, date, time })
-//     })
-//     .then(response => response.json())
-//     .then(data => {
-//       alert('Appointment booked successfully!');
-//     })
-//     .catch(error => console.error('Error:', error));
-//   });
-  
-// // Submit Profile Update Form
-// document.getElementById('profileForm').addEventListener('submit', function(e) {
-//   e.preventDefault();
-  
-//   const firstName = document.getElementById('first_name').value;
-//   const lastName = document.getElementById('last_name').value;
-//   const email = document.getElementById('email').value;
-//   const password = document.getElementById('password').value;
-//   const address = document.getElementById('address').value;
-  
-//   const token = localStorage.getItem('authToken');
-  
-//   // Make a PUT request to update the user profile
-//   fetch('/users/update', {
-//     method: 'PUT',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       'Authorization': token
-//     },
-//     body: JSON.stringify({ firstName, lastName, email, password, address })
-//   })
-//   .then(response => response.json())
-//   .then(data => {
-//     alert('Profile updated successfully!');
-//   })
-//   .catch(error => console.error('Error:', error));
-// });  
-
-// //profile pic
-// function previewProfilePic(event) {
-//   const file = event.target.files[0];
-//   if (file) {
-//       const reader = new FileReader();
-//       reader.onload = function (e) {
-//           document.getElementById('profile-pic').src = e.target.result;
-//       };
-//       reader.readAsDataURL(file);
-//   } else {
-//     alert('Please upload a valid image file.');
-//   }
-// }
+//profile pic
+function previewProfilePic(event) {
+  const file = event.target.files[0];
+  if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+          document.getElementById('profile-pic').src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+  } else {
+    alert('Please upload a valid image file.');
+  }
+}
